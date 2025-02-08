@@ -4,6 +4,10 @@
 DOMAIN-KEYWORD,openai
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,Claude
+DOMAIN-KEYWORD,groq
+DOMAIN-KEYWORD,perplexity
+DOMAIN-KEYWORD,apple
+
 
 # 域名后缀匹配
 DOMAIN-SUFFIX,perplexity.ai
@@ -26,3 +30,14 @@ DOMAIN-SUFFIX,gemini.google.com
 DOMAIN-SUFFIX,makersuite.google.com
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai.com
+
+# roblox?
+DOMAIN-KEYWORD,appsflyersdk
+DOMAIN-KEYWORD,rbxcdn
+DOMAIN-KEYWORD,fosocket
+DOMAIN-KEYWORD,roblox
+
+# Minecraft?
+DOMAIN-KEYWORD,mojang
+DOMAIN-KEYWORD,minecraft
+DOMAIN-KEYWORD,amazonaws

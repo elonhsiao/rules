@@ -2,6 +2,10 @@
 # Maybe szwego
 DOMAIN-KEYWORD,lodop
 
+# crypto 
+DOMAIN-SUFFIX,binance.com
+DOMAIN-SUFFIX,gate.com
+
 # MyList
 # 域名后缀匹配
 DOMAIN-SUFFIX,time.windows.com
