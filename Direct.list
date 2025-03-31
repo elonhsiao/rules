@@ -20,6 +20,7 @@ DOMAIN-SUFFIX,msftcomecttest.com
 DOMAIN-SUFFIX,dns.msftncsi.com
 DOMAIN-SUFFIX,ipv6.msftconnecttest.com
 DOMAIN-SUFFIX,libvio.cloud
+DOMAIN-SUFFIX,ddys.pro
 
 # 域名关键字匹配的
 DOMAIN-KEYWORD,mirror
