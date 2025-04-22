@@ -1,0 +1,21 @@
+payload:
+    # Adobe IP ranges (skip DNS lookups)
+    - IP-CIDR,192.147.0.0/16,no-resolve
+    - IP-CIDR,192.150.0.0/16,no-resolve
+    - IP-CIDR,130.248.0.0/16,no-resolve
+    - IP-CIDR,185.34.224.0/22,no-resolve
+
+    # Adobe domains
+    - DOMAIN-SUFFIX,adobe.com
+    - DOMAIN-SUFFIX,adobe.io
+    - DOMAIN-SUFFIX,adobegenuine.com
+    - DOMAIN-SUFFIX,adobelogin.com
+    - DOMAIN-SUFFIX,adobeactivate.com
+    - DOMAIN-SUFFIX,adobecc.com
+    - DOMAIN-SUFFIX,bootstrap.fyre.co
+    - DOMAIN-SUFFIX,hlrcv.stage.adobe.com
+    - DOMAIN-SUFFIX,licensing.adobe.com
+    - DOMAIN-SUFFIX,swupmf.adobe.com
+    - DOMAIN-SUFFIX,swupdl.adobe.com
+    - DOMAIN-SUFFIX,ccmdl.adobe.com
+    - DOMAIN-SUFFIX,prod.adobegenuine.com
