@@ -1,9 +1,9 @@
 payload:
-    # Adobe IP ranges (skip DNS lookups)
-    - IP-CIDR,192.147.0.0/16,no-resolve
-    - IP-CIDR,192.150.0.0/16,no-resolve
-    - IP-CIDR,130.248.0.0/16,no-resolve
-    - IP-CIDR,185.34.224.0/22,no-resolve
+    # # Adobe IP ranges (skip DNS lookups)
+    # - IP-CIDR,192.147.0.0/16,no-resolve
+    # - IP-CIDR,192.150.0.0/16,no-resolve
+    # - IP-CIDR,130.248.0.0/16,no-resolve
+    # - IP-CIDR,185.34.224.0/22,no-resolve
 
     # Adobe domains
     - DOMAIN-SUFFIX,adobe.com
