@@ -1,4 +1,11 @@
 # 直连补充列表(国内域名不解析时，防止走代理使用)
+# TEMU, 凌风，妙手，associgitated domain, etc.
+DOMAIN-KEYWORD,agentseller
+DOMAIN-KEYWORD,kuajingmaihuo
+DOMAIN-SUFFIX,kuajingabc.com
+DOMAIN-KEYWORD,miaoshou
+DOMAIN-SUFFIX,91miaoshou.com
+
 # github proxies
 DOMAIN-KEYWORD,ghproxy
 DOMAIN-KEYWORD,ghfast
