@@ -5,6 +5,7 @@ DOMAIN-KEYWORD,kuajingmaihuo
 DOMAIN-SUFFIX,kuajingabc.com
 DOMAIN-KEYWORD,miaoshou
 DOMAIN-SUFFIX,91miaoshou.com
+DOMAIN-SUFFIX,exchangerate-api.com
 
 # LOCAL ip
 IP-CIDR,10.0.0.0/8
