@@ -1,4 +1,7 @@
 # 代理补充列表
+# trae
+DOMAIN-KEYWORD,trae-api
+DOMAIN-SUFFIX,mchost.guru
 
 # 域名后缀匹配
 DOMAIN-SUFFIX,onlyoffice.com
