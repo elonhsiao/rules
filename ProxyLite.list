@@ -3,6 +3,17 @@
 DOMAIN-KEYWORD,trae-api
 DOMAIN-SUFFIX,mchost.guru
 
+# roblox?
+DOMAIN-KEYWORD,appsflyersdk
+DOMAIN-KEYWORD,rbxcdn
+DOMAIN-KEYWORD,fosocket
+DOMAIN-KEYWORD,roblox
+
+# Minecraft?
+DOMAIN-KEYWORD,mojang
+DOMAIN-KEYWORD,minecraft
+DOMAIN-KEYWORD,amazonaws
+
 # 域名后缀匹配
 DOMAIN-SUFFIX,onlyoffice.com
 DOMAIN-SUFFIX,x.com
