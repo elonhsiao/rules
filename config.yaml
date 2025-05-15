@@ -127,6 +127,7 @@ proxy-groups:
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
+  - RULE-SET,ProxyLite,🤖 ChatGPT
   - RULE-SET,AdobeR,REJECT
   - RULE-SET,directxg,直连
   - RULE-SET,Ecom,🚛 电商专线
@@ -163,6 +164,7 @@ rule-providers:
   private_domain:    { <<: *domain_mrs,  url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs",                       path: ./rules/private_domain.mrs }
   directxg:          { <<: *class,       url: "https://raw.githubusercontent.com/elonhsiao/rules/main/Direct.list",                                            path: ./rules/directxg.list }
   Ecom:              { <<: *class,       url: "https://raw.githubusercontent.com/elonhsiao/rules/main/Ecommercial.list",                                       path: ./rules/Ecommercial.list }
+  ProxyLite:         { <<: *class,       url: "https://raw.githubusercontent.com/elonhsiao/rules/main/ProxyLite.list",                                         path: ./rules/ProxyLite.list }
   ai:                { <<: *domain_mrs,  url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs",               path: ./rules/ai.mrs }
   youtube_domain:    { <<: *domain_mrs,  url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs",                       path: ./rules/youtube_domain.mrs }
   google_domain:     { <<: *domain_mrs,  url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs",                        path: ./rules/google_domain.mrs }
