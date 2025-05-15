@@ -6,6 +6,11 @@ DOMAIN-SUFFIX,kuajingabc.com
 DOMAIN-KEYWORD,miaoshou
 DOMAIN-SUFFIX,91miaoshou.com
 DOMAIN-SUFFIX,exchangerate-api.com
+DOMAIN-SUFFIX,dinwow.com
+
+# trae
+DOMAIN-KEYWORD,trae-api
+DOMAIN-SUFFIX,mchost.guru
 
 # LOCAL ip
 IP-CIDR,10.0.0.0/8
