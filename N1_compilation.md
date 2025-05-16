@@ -1,6 +1,26 @@
-# Compiling OpenWrt/ImmortalWrt for Philcomn N1 Router
+# Compiling OpenWrt/ImmortalWrt for Philcomn N1 Router with Nikki Integration
 
 Here is a summary of the steps we followed to successfully compile a custom OpenWrt/ImmortalWrt image for your Philcomn N1 router using the ophub/amlogic-s9xxx-openwrt build system. This guide includes all the commands we used and encountered during the process, along with comments for clarity.
+
+## About Nikki
+
+Nikki is a powerful package that provides transparent proxy capabilities with Mihomo on OpenWrt. It offers the following features:
+
+- Transparent Proxy (Redirect/TPROXY/TUN, IPv4 and/or IPv6)
+- Access Control
+- Profile Mixin
+- Profile Editor
+- Scheduled Restart
+
+### Prerequisites for Nikki
+
+To use Nikki, your OpenWrt system must meet these requirements:
+
+- OpenWrt >= 23.05
+- Linux Kernel >= 5.13 (the images we build in this guide will satisfy this requirement)
+- firewall4
+
+This guide will help you build an OpenWrt image with Nikki pre-installed, saving you the trouble of installing it separately after flashing your router.
 
 ## 1. Prerequisites
 
@@ -24,6 +44,20 @@ sudo apt install btrfs-progs
 # if available, otherwise it falls back to the standard gzip.
 sudo apt install pigz
 ```
+
+### Nikki Dependencies
+
+When building with Nikki integration, the following packages will be included in your OpenWrt image. These are handled automatically by the customization script in Step 4, but it's good to be aware of them:
+
+- ca-bundle: Certificate Authority bundle for secure connections
+- curl: Command-line tool for transferring data with URLs
+- yq: Lightweight and portable command-line YAML processor
+- firewall4: NFT-based firewall for OpenWrt
+- ip-full: Full version of IP utilities from iproute2
+- kmod-inet-diag: Kernel modules for socket monitoring
+- kmod-nft-socket: Kernel module for nftables socket operations
+- kmod-nft-tproxy: Kernel module for transparent proxy support
+- kmod-tun: Universal TUN/TAP device driver
 
 ## 2. Clone the Repository
 
@@ -68,7 +102,7 @@ cd ~/amlogic-s9xxx-openwrt
 
 ## 4. Create/Edit Customization Script (diy-script.sh)
 
-This is a crucial step for adding custom packages like Openclash, Dockerman, and their LuCI interfaces. The remake script executes this script during the build process to apply your customizations to the root filesystem.
+This is a crucial step for adding custom packages like Nikki (for transparent proxy with Mihomo), Openclash, Dockerman, and their LuCI interfaces. The remake script executes this script during the build process to apply your customizations to the root filesystem.
 
 ```bash
 # Navigate to the openwrt-script directory
@@ -79,19 +113,48 @@ cd openwrt-script
 nano diy-script.sh
 
 # Inside the editor, add the commands necessary to include the desired package feeds
-# and select the packages you want. The exact commands depend on how the
-# ophub/amlogic-s9xxx-openwrt build system handles custom feeds and package selection
-# within diy-script.sh. You will likely need to:
-# 1. Add the URL for the Nikki feed (or other feeds) to a feeds configuration file.
-# 2. Update the feeds.
-# 3. Install/select the desired packages (e.g., luci-app-openclash, dockerd, luci-app-dockerman).
-# Consult the ophub/amlogic-s9xxx-openwrt project's documentation or examples
-# for the precise commands to put in this script.
+# and select the packages you want.
 
-# Example (placeholder - actual commands may differ):
-# echo 'src-git nikki_feed <URL_TO_NIKKI_FEED>' >> ../feeds.conf.d/custom_feeds.conf
-# ../scripts/feeds update -a
-# ../scripts/feeds install luci-app-openclash dockerd luci-app-dockerman
+# Here's an example script that adds the Nikki feed for transparent proxy with Mihomo:
+
+#!/bin/bash
+
+# Add Nikki feed for transparent proxy with Mihomo
+echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> ../feeds.conf.default
+
+# Update all feeds
+../scripts/feeds update -a
+
+# Install all feeds
+../scripts/feeds install -a
+
+# Select specific packages (uncomment or add as needed)
+# For Nikki (transparent proxy with Mihomo)
+cat >> .config <<EOF
+CONFIG_PACKAGE_nikki=y
+CONFIG_PACKAGE_luci-app-nikki=y
+CONFIG_PACKAGE_luci-i18n-nikki-zh-cn=y
+# Nikki dependencies
+CONFIG_PACKAGE_ca-bundle=y
+CONFIG_PACKAGE_curl=y
+CONFIG_PACKAGE_yq=y
+CONFIG_PACKAGE_firewall4=y
+CONFIG_PACKAGE_ip-full=y
+CONFIG_PACKAGE_kmod-inet-diag=y
+CONFIG_PACKAGE_kmod-nft-socket=y
+CONFIG_PACKAGE_kmod-nft-tproxy=y
+CONFIG_PACKAGE_kmod-tun=y
+EOF
+
+# For other common packages (optional)
+cat >> .config <<EOF
+# Docker support
+CONFIG_PACKAGE_dockerd=y
+CONFIG_PACKAGE_luci-app-dockerman=y
+# OpenClash
+CONFIG_PACKAGE_luci-app-openclash=y
+EOF
+
 # Make sure to save and close the file after adding your commands.
 
 # Make the script executable. This is necessary for the remake script to run it.
@@ -198,6 +261,65 @@ Both images are valid OpenWrt builds for your s905d device with different kernel
 - **6.12.28**: This is a newer kernel series. It might include support for newer hardware or features but could potentially be less stable than the LTS series.
 
 For general use and stability, starting with the 6.1.138 image is often recommended. If you encounter issues with hardware support or specific features, you could then try the 6.12.28 image to see if the newer kernel resolves them. The best kernel can sometimes depend on the specific hardware revisions or components in your Philcomn N1.
+
+## 10. Configuring and Using Nikki
+
+### If Nikki is Pre-installed (via Build Process)
+
+If you've included Nikki in your build as described in the customization script section, it will be pre-installed on your OpenWrt system. Here's how to configure it after booting your new OpenWrt image:
+
+1. **Access the LuCI Web Interface**: Navigate to http://192.168.1.1 in your web browser and log in with the default credentials (username: root, password: password).
+
+2. **Navigate to Nikki Settings**: Go to "Services" -> "Nikki" in the LuCI menu.
+
+3. **Basic Configuration**:
+   - Enable Nikki by toggling the switch
+   - Select or upload a configuration file (Mihomo/Clash format)
+   - Configure proxy settings according to your needs
+
+4. **Advanced Features**:
+   - Set up access control rules to determine which devices use the proxy
+   - Configure profile mixing options
+   - Set scheduled restart if desired
+
+5. **Apply Configuration**: Click "Save & Apply" to activate your settings.
+
+### Alternative Installation Methods
+
+If you didn't include Nikki during the build process or want to install it on an existing OpenWrt system, you have these options:
+
+#### A. Install From Feed (Recommended)
+
+1. Add the Nikki feed:
+
+```bash
+# Run this command on your OpenWrt device (via SSH)
+curl -s -L https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/feed.sh | ash
+```
+
+2. Install the packages:
+
+```bash
+# For opkg-based systems
+opkg install nikki
+opkg install luci-app-nikki
+opkg install luci-i18n-nikki-zh-cn  # Optional: Chinese language pack
+
+# For apk-based systems
+apk add nikki
+apk add luci-app-nikki
+apk add luci-i18n-nikki-zh-cn  # Optional: Chinese language pack
+```
+
+#### B. Install From Release
+
+Alternatively, you can use the installation script:
+
+```bash
+curl -s -L https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/install.sh | ash
+```
+
+For detailed configuration instructions and troubleshooting, refer to the Nikki wiki at: https://github.com/nikkinikki-org/OpenWrt-nikki/wiki
 
 ## Troubleshooting Notes
 
