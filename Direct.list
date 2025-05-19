@@ -1,8 +1,9 @@
 # 直连补充列表(国内域名不解析时，防止走代理使用)
 # TEMU, 凌风，妙手，associgitated domain, etc.
 DOMAIN-KEYWORD,agentseller
+DOMAIN-SUFFIX,agentseller.temu.com
 DOMAIN-KEYWORD,kuajingmaihuo
-DOMAIN-SUFFIX,kuajingabc.com
+DOMAIN-SUFFIX,seller.kuajingabc.com
 DOMAIN-KEYWORD,miaoshou
 DOMAIN-SUFFIX,91miaoshou.com
 DOMAIN-SUFFIX,exchangerate-api.com
@@ -10,8 +11,7 @@ DOMAIN-SUFFIX,dinwow.com
 DOMAIN-SUFFIX,shein.com
 DOMAIN-SUFFIX,kwcdn.com
 DOMAIN-SUFFIX,geiwohuo.com
-DOMAIN-SUFFIX,gogodns.xin
-DOMAIN,au.thtk.temu.com
+
 # LOCAL ip
 IP-CIDR,10.0.0.0/8
 IP-CIDR,172.16.0.0/12
