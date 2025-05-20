@@ -1,4 +1,7 @@
 # 代理补充列表
+# midjourney
+DOMAIN-SUFFIX,midjourney.com
+DOMAIN-KEYWORD,midjourney
 # trae
 DOMAIN-KEYWORD,trae-api
 DOMAIN-SUFFIX,mchost.guru
