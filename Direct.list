@@ -11,6 +11,7 @@ DOMAIN-SUFFIX,dinwow.com
 DOMAIN-SUFFIX,shein.com
 DOMAIN-SUFFIX,kwcdn.com
 DOMAIN-SUFFIX,geiwohuo.com
+DOMAIN-SUFFIX,gogodns.xin
 
 # LOCAL ip
 IP-CIDR,10.0.0.0/8

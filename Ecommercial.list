@@ -1,4 +1,3 @@
 # TEMU首页采集需要走代理
 # TEMU首页，规则放直连后面，因为跟合规页agenseller也是这个域名
 DOMAIN-SUFFIX,temu.com
-DOMAIN-SUFFIX,gogodns.xin
