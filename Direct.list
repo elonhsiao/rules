@@ -1,6 +1,6 @@
 # 直连补充列表(国内域名不解析时，防止走代理使用)
 # 小众论坛等
-DOMAIN-KEYWARD,appinn
+DOMAIN-KEYWORD,appinn
 # TEMU, 凌风，妙手，associgitated domain, etc.
 DOMAIN-KEYWORD,agentseller
 DOMAIN-SUFFIX,agentseller.temu.com
